@@ -5,25 +5,27 @@
             <div class="color">Color: {{ data.data.product.colorName }}</div>
             <ul v-if="swatches">
                 <li v-for="swatch in swatches.data.swatches.swatches" :key="swatch.code">
-                    <img :src="swatch.imageUrl" />
+                    <router-link :to="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></router-link>
                 </li>
             </ul>
         </div>
         <section class="size-tiles">
-          <div v-if="data.data.product.variantWaist?.length > 0" class="size-label" >Waist</div>
+          <div v-if="data.data.product.variantWaist?.length > 0" class="size-label" >Waist {{selectedWaist}}</div>
           <ul class="size-grid" v-if="data.data.product.variantWaist">
             <li  v-for="(waist, i) in data.data.product.variantWaist"
+            :class="{selected: sizeTilesWaist[i] == selectedWaist}"
             :key="`w${i}-${waist}`" @click="setSelectedWaist(i)">
               {{waist}}
-              <div v-if="selectedWaistIdx == i" :class="{selected: selectedWaistIdx == i}"></div>
+              <div v-if="selectedWaistIdx == i"></div>
             </li>
           </ul>
-          <div v-if="data.data.product.variantLength?.length > 0" class="size-label" >Length</div>
+          <div v-if="data.data.product.variantLength?.length > 0" class="size-label" >Length {{selectedLength}}</div>
           <ul class="size-grid" v-if="data.data.product.variantLength">
             <li v-for="(lengthSize, i) in data.data.product.variantLength"
+            :class="{selected: sizeTilesLength[i] == selectedLength}"
             :key="`l${i}-${lengthSize}`" @click="setSelectedLength(i)">
               {{lengthSize}}
-              <div v-if="selectedLengthIdx == i" :class="{selected: selectedLengthIdx == i}"></div>
+              <div v-if="selectedLengthIdx == i" ></div>
             </li>
           </ul>
           <div v-if="data.data.product.variantSize?.length > 0" class="size-label" >Size</div>
@@ -42,6 +44,8 @@
 <script>
 // import { ref } from "vue";
 
+import { ref, computed } from 'vue';
+
 export default {
   props: {
     data: {
@@ -56,6 +60,38 @@ export default {
 
   setup(props) {
     console.log("Item Selector PROPS :: ", props);
+
+    const selectedWaist = ref("");
+    const selectedLength = ref("");
+
+    const setSelectedWaist = (index) => {
+        console.log("WAIST :: ", sizeTilesWaist.value, index);
+        selectedWaist.value = sizeTilesWaist.value[index];
+
+    }
+    
+    const setSelectedLength = (index) => {
+        console.log("LENGTH :: ", sizeTilesLength.value), index;
+        selectedLength.value = sizeTilesLength.value[index];
+    }
+
+    // computed
+    const sizeTilesWaist = computed(() => {
+      return props.data.data.product.variantWaist;
+    });
+
+    const sizeTilesLength = computed(() => {
+      return props.data.data.product.variantLength;
+    });
+
+    return {
+        setSelectedLength,
+        setSelectedWaist,
+        sizeTilesWaist,
+        sizeTilesLength,
+        selectedWaist,
+        selectedLength
+    }
   },
 };
 </script>
@@ -69,16 +105,23 @@ export default {
             line-height: 28px;
             font-family: Helvetica-Now-Text-Bold,Helvetica,Arial,sans-serif;
             font-weight: 700;
+            margin: 20px 0;
         }
         .size-tiles {
             font-family: Avenir, Helvetica, Arial, sans-serif;
             .size-label {
                 font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 3px;
             }
             ul {
                 padding: 0;
                 margin: 0;
-                li { 
+                li {
+                    &.selected {
+                        border: 1px solid #a3a3a3;
+                        border-radius: 4px;
+                    }
                     display: inline-block;
                     white-space: nowrap;
                     width: 48px;
@@ -86,7 +129,7 @@ export default {
                     list-style: none;
                     line-height: 48px;
                     text-align: center;
-                    margin: 2px;
+                    padding: 2px;
                     font-size: 12px;
                 }
             }

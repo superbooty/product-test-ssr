@@ -21,10 +21,15 @@ import {productQuery} from "@/gql/productQuery";
 import {swatchQuery} from "@/gql/swatchQuery";
 
 
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
 export default {
   
-
+  props: {
+    code: {
+      type: String,
+      required: true,
+    },
+  },
   setup(props) {
     console.log("Item Selector PROPS :: ", props);
 
@@ -77,10 +82,14 @@ export default {
             console.log(error);
         });
     }
+
+    // fetchProduct(props.code);
    
     // hooks
     onMounted(() => {
-        fetchProduct("005054891");
+        nextTick(() => {
+            fetchProduct(props.code);
+        })
     });
 
     return {

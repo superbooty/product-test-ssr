@@ -132,10 +132,10 @@ export default {
         }
         li {
             text-align: left;
-            flex-basis: 40px;
-            line-height: 40px;
-            font-size: 20px;
-            font-weight: 800;
+            flex-basis: 50px;
+            line-height: 50px;
+            font-size: 28px;
+            font-weight: 900;
             white-space: nowrap;
         }
     }
@@ -165,7 +165,7 @@ export default {
         padding: 0;
         li {
             flex-basis: 120px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 800;
             text-transform: uppercase;
         }
