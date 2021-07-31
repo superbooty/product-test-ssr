@@ -32,7 +32,13 @@ brew install nginx.
 $ brew upgrade
 ```
 
-NGINX Config File can be found at 
+### Once homebrew is upgraded you can then install **nginx**
+```
+$ brew install nginx
+```
+</br>
+
+NGINX Config File can be found at
 ```
 usr/local/etc/nginx (if installed with Homebrew)
 ```
