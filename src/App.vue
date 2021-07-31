@@ -1,6 +1,9 @@
 <template>
     <header-view></header-view>
+    <!-- Notice the keep alive this saves a copy of the router components to memory -->
+    <keep-alive>
       <router-view :key="$route.path"/>
+    </keep-alive>
 </template>
 <script>
 import HeaderView from '@/global/Header.vue'
