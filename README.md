@@ -66,6 +66,9 @@ nginx.config file from this repo there.
 ```
 
 ```
+Notice NGINX will listen on port 80 here so be sure you dont have a running process
+listening on that port in your local.
+
 server {
         listen       80;
         server_name  localhost;
@@ -128,6 +131,11 @@ server {
         #    deny  all;
         #}
     }
+```
+
+>This URL goes through NGINX into your express server via a proxy pass
+```
+http://localhost/product/005054891
 ```
 
 Other usefull information about NGINX.  To check logs you can tail the following files
