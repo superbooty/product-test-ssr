@@ -25,7 +25,7 @@
 <script>
 import { ref, onMounted, nextTick } from "vue";
 
-import {cmsQuery} from "@/gql/cmsQuery";
+import {appState} from "@/state/appState";
 
 export default {
   props: {
@@ -38,35 +38,7 @@ export default {
 
     console.log("Header PROPS :: ", props);
 
-    const fetchNav = () => {
-        const fetchPromises = [];
-        const promise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=cmsContent&locale=US-en_US`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                operationName: "cmsContent",
-                variables: {
-                    contentType: "partials_sitewide_v3"
-                },
-                query: cmsQuery
-            }),
-        });
-        fetchPromises.push(promise);
-        Promise.all(fetchPromises).then(function (responses) {
-            // Get a JSON object from each of the responses
-            return Promise.all(responses.map(function (response) {
-                return response.json();
-            }));
-        }).then(function (data) {
-            console.log("DATA :: ", data[0].data.cmsContent.data.entries[0].header_category_links[0]);
-            nav.value = data[0].data.cmsContent.data.entries[0].header_category_links[0];
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
+    const { fetchNav } = appState();
 
     const selectSubMenu = (uid) => {
         if (subMenuUID.value !== uid) {
@@ -83,7 +55,12 @@ export default {
             if (window.__PUPPETEER_HEADER_CTX__) {
                 nav.value = window.__PUPPETEER_HEADER_CTX__.nav;
             } else {
-                fetchNav();
+                fetchNav().then(function (data) {
+                    console.log("DATA :: ", data[0].data.cmsContent.data.entries[0].header_category_links[0]);
+                    nav.value = data[0].data.cmsContent.data.entries[0].header_category_links[0];
+                }).catch(function (error) {
+                    console.log(error);
+                });
             }
         })        
     });
