@@ -80,7 +80,7 @@ export default {
 
     onMounted(() => {
         nextTick(() => {
-            if (window.window.__PUPPETEER_HEADER_CTX__) {
+            if (window.__PUPPETEER_HEADER_CTX__) {
                 nav.value = window.__PUPPETEER_HEADER_CTX__.nav;
             } else {
                 fetchNav();
