@@ -44,9 +44,10 @@ export default {
     // hooks
     onMounted(() => {
         nextTick(() => {
-            if (window.window.__PUPPETEER_CTX__) {
-                product.value = window.__PUPPETEER_CTX__.product;
-                swatches.value = window.__PUPPETEER_CTX__.swatches;
+            if (window.window.__PUPPETEER_PRODUCT_CTX__ &&
+                window.window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
+                product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
+                swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
             } else {
                 fetchProduct(props.code).then(function (data) {
                 console.log("DATA :: ", data[0]);

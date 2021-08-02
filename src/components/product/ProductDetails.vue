@@ -5,7 +5,7 @@
             <div class="color">Color: {{ data.data.product.colorName }}</div>
             <ul v-if="swatches">
                 <li v-for="swatch in swatches.data.swatches.swatches" :key="swatch.code">
-                    <router-link :to="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></router-link>
+                    <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a>
                 </li>
             </ul>
         </div>

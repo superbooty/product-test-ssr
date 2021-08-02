@@ -23,7 +23,7 @@
     </section>
 </template>
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
 
 import {cmsQuery} from "@/gql/cmsQuery";
 
@@ -79,7 +79,13 @@ export default {
     }
 
     onMounted(() => {
-        fetchNav();
+        nextTick(() => {
+            if (window.window.__PUPPETEER_HEADER_CTX__) {
+                nav.value = window.__PUPPETEER_HEADER_CTX__.nav;
+            } else {
+                fetchNav();
+            }
+        })        
     });
 
     return {
