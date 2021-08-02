@@ -17,8 +17,9 @@ import ProductDetails from "../components/product/ProductDetails.vue";
 import SimpleCarousel from "../components/carousel/SimpleCarousel.vue";
 
 // import {appState} from "@/state/appState";
-import {productQuery} from "@/gql/productQuery";
-import {swatchQuery} from "@/gql/swatchQuery";
+
+
+import {appState} from "@/state/appState";
 
 
 import { ref, onMounted, nextTick } from "vue";
@@ -33,68 +34,35 @@ export default {
   setup(props) {
     console.log("Item Selector PROPS :: ", props);
 
+    const { fetchProduct } = appState();
+
     const product = ref(null);
     const swatches = ref(null);
-    
-    const fetchProduct = (code) => {
-        const fetchPromises = [];
-        const productPromise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=product&locale=US-en_US`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                operationName: "product",
-                variables: {
-                    code: code
-                },
-                query: productQuery
-            }),
-        });
-        const swatchPromise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=swatches&locale=US-en_US`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                operationName: "swatches",
-                variables: {
-                    code: code
-                },
-                query: swatchQuery
-            }),
-        });
-        fetchPromises.push(productPromise);
-        fetchPromises.push(swatchPromise);
-        Promise.all(fetchPromises).then(function (responses) {
-            // Get a JSON object from each of the responses
-            return Promise.all(responses.map(function (response) {
-                return response.json();
-            }));
-        }).then(function (data) {
-            console.log("DATA :: ", data[0]);
-            console.log("SWATCHES ::", data[1]);
-            product.value = data[0];
-            swatches.value = data[1];
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
 
     // fetchProduct(props.code);
    
     // hooks
     onMounted(() => {
         nextTick(() => {
-            fetchProduct(props.code);
+            if (window.window.__PUPPETEER_CTX__) {
+                product.value = window.__PUPPETEER_CTX__.product;
+                swatches.value = window.__PUPPETEER_CTX__.product;
+            } else {
+                fetchProduct(props.code).then(function (data) {
+                console.log("DATA :: ", data[0]);
+                console.log("SWATCHES ::", data[1]);
+                product.value = data[0];
+                swatches.value = data[1];
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
         })
     });
 
     return {
         product,
-        swatches
+        swatches,
     };
   },
   
