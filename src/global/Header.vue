@@ -40,7 +40,7 @@ export default {
 
     const fetchNav = () => {
         const fetchPromises = [];
-        const promise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=product&locale=US-en_US`, {
+        const promise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=cmsContent&locale=US-en_US`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
