@@ -169,8 +169,13 @@ Add the following to /extra/httpd-vhosts.conf
 <VirtualHost *:80>
     ServerName localhost
     ProxyRequests On
+    ProxyPass /js http://localhost:8080/js/
+    ProxyPassReverse /js/ http://localhost:8080/js/
+
+
     ProxyPass / http://localhost:8000/
     ProxyPassReverse / http://localhost:8000/
+
 </VirtualHost>
 
 Now restart apache server with the following
