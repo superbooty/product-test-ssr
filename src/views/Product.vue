@@ -49,15 +49,16 @@ export default {
     onMounted(() => {
         console.log("IS FROM SWATCH :: ", props.swatchClick);
         nextTick(() => {
-            if (window.window.__PUPPETEER_PRODUCT_CTX__ &&
-                window.window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
+            if (window.__PUPPETEER_PRODUCT_CTX__ &&
+                window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
                 product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
                 swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
             } else {
                 fetchProduct(props.code, props.swatchClick).then(function (data) {
                     const stateObj = getStateObj();
                     stateObj.product.value = data[0];
-                    stateObj.swatches.value = data[1] ? data[1] : stateObj.swatches.value;
+                    stateObj.swatches.value = data[1] ? data[1] : 
+                        stateObj.swatches.value ? stateObj.swatches.value : swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
                     product.value = stateObj.product.value;
                     swatches.value = stateObj.swatches.value;
                     console.log("STATE OBJ :: ", stateObj);
