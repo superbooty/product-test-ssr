@@ -30,11 +30,15 @@ export default {
       type: String,
       required: true,
     },
+    swatchClick: {
+      type: Boolean,
+      required: true,
+    },
   },
   setup(props) {
     console.log("Item Selector PROPS :: ", props);
 
-    const { fetchProduct } = appState();
+    const { fetchProduct, getStateObj } = appState();
 
     const product = ref(null);
     const swatches = ref(null);
@@ -43,17 +47,20 @@ export default {
    
     // hooks
     onMounted(() => {
+        console.log("IS FROM SWATCH :: ", props.swatchClick);
         nextTick(() => {
             if (window.window.__PUPPETEER_PRODUCT_CTX__ &&
                 window.window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
                 product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
                 swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
             } else {
-                fetchProduct(props.code).then(function (data) {
-                console.log("DATA :: ", data[0]);
-                console.log("SWATCHES ::", data[1]);
-                product.value = data[0];
-                swatches.value = data[1];
+                fetchProduct(props.code, props.swatchClick).then(function (data) {
+                    const stateObj = getStateObj();
+                    stateObj.product.value = data[0];
+                    stateObj.swatches.value = data[1] ? data[1] : stateObj.swatches.value;
+                    product.value = stateObj.product.value;
+                    swatches.value = stateObj.swatches.value;
+                    console.log("STATE OBJ :: ", stateObj);
                 }).catch(function (error) {
                     console.log(error);
                 });

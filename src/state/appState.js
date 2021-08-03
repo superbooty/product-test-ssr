@@ -42,8 +42,9 @@ export function appState() {
         })
     }
     // fetch product from server
-    const fetchProduct = (code) => {
+    const fetchProduct = (code, swatchClick) => {
         const fetchPromises = [];
+        console.log("STATE SWATCH CLICK :: ", swatchClick);
         const productPromise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=product&locale=US-en_US`, {
             method: "POST",
             headers: {
@@ -58,22 +59,25 @@ export function appState() {
                 query: productQuery
             }),
         });
-        const swatchPromise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=swatches&locale=US-en_US`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                operationName: "swatches",
-                variables: {
-                    code: code
-                },
-                query: swatchQuery
-            }),
-        });
         fetchPromises.push(productPromise);
-        fetchPromises.push(swatchPromise);
+        if (!swatchClick) {
+            console.log("STATE SWATCH CLICK :: ", swatchClick);
+            const swatchPromise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=swatches&locale=US-en_US`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    operationName: "swatches",
+                    variables: {
+                        code: code
+                    },
+                    query: swatchQuery
+                }),
+            });
+            fetchPromises.push(swatchPromise);
+        }
         return Promise.all(fetchPromises).then(function (responses) {
             // Get a JSON object from each of the responses
             return Promise.all(responses.map(function (response) {

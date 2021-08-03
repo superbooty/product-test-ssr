@@ -2,7 +2,7 @@
     <header-view></header-view>
     <!-- Notice the keep alive this saves a copy of the router components to memory -->
     <!-- <keep-alive> -->
-    <router-view :key="$route.fullPath"/>
+      <router-view :key="$route.path"/>
     <!-- </keep-alive> -->
 </template>
 <script>
