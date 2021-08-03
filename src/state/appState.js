@@ -16,12 +16,6 @@ export function appState() {
     const getStateObj = () => {
         return state.value
     }
-    const getProduct = () => {
-        return state.value.product;
-    }
-    const getSwatches = () => {
-        return state.value.swatches;
-    }
     // fetch the navigation
     const fetchNav = () => {
         const fetchPromises = [];
@@ -87,7 +81,7 @@ export function appState() {
             }));
         })
     }
-    return {getStateObj, fetchProduct, fetchNav, getProduct, getSwatches};
+    return {getStateObj, fetchProduct, fetchNav};
 }
 
 export default {

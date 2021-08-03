@@ -38,11 +38,14 @@
           </ul>
         </section>
         <div class="product-price">{{ data.data.product.price.formattedValue }}</div>
+        <add-to-bag></add-to-bag>
     </div>
 </template>
 
 <script>
 // import { ref } from "vue";
+
+import AddToBag from "./AddToBag.vue";
 
 import { ref, computed } from 'vue';
 
@@ -92,6 +95,9 @@ export default {
         selectedWaist,
         selectedLength
     }
+  },
+  components: {
+    AddToBag,
   },
 };
 </script>
