@@ -1,10 +1,17 @@
 <template>
     <div v-if="data" class="product-img">
-        <img :src="data.data.product.galleryImageList.galleryImage[0].url" />
+      <sized-image
+        :image="data.data.product.galleryImageList.galleryImage[0]"
+        :aspect-ratio="aspectRatio"
+        :disable-bottom-crop="true"
+        :product-alt="productAlt"
+    />
     </div>
 </template>
 
 <script>
+import SizedImage from "@/global/SizedImage.vue";
+
 import { ref } from "vue";
 
 export default {
@@ -21,7 +28,11 @@ export default {
     separator: {
       type: Boolean,
       default: false,
-    }
+    },
+    aspectRatio: {
+      type: String,
+      default: "pdpWide",
+    },
   },
 
   setup(props, {emit}) {
@@ -39,6 +50,10 @@ export default {
       atcProduct
     };
   },
+
+  components: {
+    SizedImage,
+  }
 };
 </script>
 
