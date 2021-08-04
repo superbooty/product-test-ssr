@@ -1,7 +1,7 @@
 <template>
   <div class="add-to-cart">
     <button
-      class="atc-btn">
+      class="atc-btn" @click="addToBag">
       Add to Bag
     </button>
   </div>
@@ -21,7 +21,14 @@ export default {
   setup() {
     const {getStateObj} = appState();
 
-    console.log("PROD ::",getStateObj());
+    console.log("STATE OBJ ::",getStateObj());
+
+    const addToBag = () => {
+      console.log("ADD TO BAG ...");
+    } 
+    return {
+      addToBag
+    }
   },
   components: {
   }

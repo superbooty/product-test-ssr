@@ -48,6 +48,8 @@
 
 import AddToBag from "./AddToBag.vue";
 
+import {appState} from "@/state/appState";
+
 import { ref, computed } from 'vue';
 
 export default {
@@ -65,23 +67,26 @@ export default {
   setup(props) {
     console.log("Item Selector PROPS :: ", props);
 
+    const {getStateObj} = appState();
+
     const selectedWaist = ref("");
     const selectedLength = ref("");
 
     const setSelectedWaist = (index) => {
         console.log("WAIST :: ", sizeTilesWaist.value, index);
         selectedWaist.value = sizeTilesWaist.value[index];
-
+        getStateObj().selectedSizes.waist = selectedWaist.value;
     }
     
     const setSelectedLength = (index) => {
         console.log("LENGTH :: ", sizeTilesLength.value), index;
         selectedLength.value = sizeTilesLength.value[index];
+        getStateObj().selectedSizes.length = selectedLength.value;
     }
 
     // computed
     const sizeTilesWaist = computed(() => {
-      return props.data.data.product.variantWaist;
+      return props.data.data.product.variantWaist; 
     });
 
     const sizeTilesLength = computed(() => {

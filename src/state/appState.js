@@ -1,7 +1,7 @@
 // store/todos.js
 import {ref } from "vue";
 
-import {productQuery} from "@/gql/productQuery";
+// import {productQuery} from "@/gql/productQuery";
 import {swatchQuery} from "@/gql/swatchQuery";
 import {cmsQuery} from "@/gql/cmsQuery";
 
@@ -9,7 +9,8 @@ const state = ref({
     stateObj: {},
     product: {},
     swatches: {},
-    nav: {}
+    nav: {},
+    selectedSizes: {}
 });
 
 export function appState() {
@@ -44,21 +45,10 @@ export function appState() {
     // fetch product from server
     const fetchProduct = (code, swatchClick) => {
         const fetchPromises = [];
+        const country = "US";
+        const language = "en-US";
         console.log("STATE SWATCH CLICK :: ", swatchClick);
-        const productPromise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=product&locale=US-en_US`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                operationName: "product",
-                variables: {
-                    code: code
-                },
-                query: productQuery
-            }),
-        });
+        const productPromise = fetch(`http://localhost/api/product/${country}/${language}/${code}`);
         fetchPromises.push(productPromise);
         if (!swatchClick) {
             console.log("STATE SWATCH CLICK :: ", swatchClick);
