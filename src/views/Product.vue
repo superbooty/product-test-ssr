@@ -8,7 +8,7 @@
         <product-details :data="product" :swatches="swatches"></product-details>
     </section>
   </div>
-  <simple-carousel v-if="product" :images="product.data.product.galleryImageList.galleryImage"></simple-carousel>
+  <simple-carousel v-if="product" :images="processedImgArray"></simple-carousel>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ import SimpleCarousel from "../components/carousel/SimpleCarousel.vue";
 import {appState} from "@/state/appState";
 
 
-import { ref, onMounted, nextTick } from "vue";
+import { ref, onMounted, computed, nextTick } from "vue";
 export default {
   
   props: {
@@ -44,6 +44,20 @@ export default {
     const swatches = ref(null);
 
     // fetchProduct(props.code);
+
+    // computed
+    const processedImgArray = computed (() => {
+        const productImages = product.value.data.product.galleryImageList.galleryImage;
+        const defaultQueryString = "?fmt=jpeg&qlt=70,1&op_sharpen=0&resMode=sharp2&op_usm=0.8,1,10,0&fit=crop,0&wid=900&hei=1200";
+        let processedArray = [];
+        productImages.forEach((img) => {
+          const processed = {
+            'url': `${img.url.split("?")[0]}${defaultQueryString}`
+          };
+          processedArray.push(processed)
+        })
+        return processedArray;
+    });
    
     // hooks
     onMounted(() => {
@@ -72,6 +86,7 @@ export default {
     return {
         product,
         swatches,
+        processedImgArray
     };
   },
   
