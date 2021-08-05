@@ -127,10 +127,14 @@ export default {
         }
         .size-tiles {
             font-family: Avenir, Helvetica, Arial, sans-serif;
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            display: grid;
+            grid-template-rows: auto;
+            grid-row-gap: 5px;
             .size-label {
                 font-size: 14px;
                 font-weight: 600;
-                margin-bottom: 3px;
+                margin: 15px 0 0 0;
             }
             ul {
                 padding: 0;
@@ -142,12 +146,13 @@ export default {
                     }
                     display: inline-block;
                     white-space: nowrap;
-                    width: 48px;
-                    height: 48px;
+                    width: 42px;
+                    height: 42px;
                     list-style: none;
-                    line-height: 48px;
+                    line-height: 42px;
                     text-align: center;
                     padding: 2px;
+                    margin: 3px;
                     font-size: 12px;
                 }
             }
@@ -167,7 +172,7 @@ export default {
                 margin: 5px 0;
                 li {
                     position: relative;
-                    padding: 5px;
+                    padding: 5px 10px;
                     width: 28px;
                     height: 28px;
                     div {
@@ -178,8 +183,8 @@ export default {
                         height: 32px;
                         width: 32px;
                         top: 2px;
-                        left: 2px;
-                        border: 1px solid black;
+                        left: 7px;
+                        border: 1px solid #4c4c4c;
                         border-radius: 30px;
                       }
                     }
