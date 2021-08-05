@@ -68,17 +68,11 @@ export default {
                 product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
                 swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
             } else {
-                fetchProduct(props.code, props.swatchClick).then(function (data) {
-                    const stateObj = getStateObj();
-                    stateObj.product.value = data[0];
-                    stateObj.swatches.value = data[1] ? data[1] : 
-                        stateObj.swatches.value ? stateObj.swatches.value : swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
-                    product.value = stateObj.product.value;
-                    swatches.value = stateObj.swatches.value;
-                    console.log("STATE OBJ :: ", stateObj);
-                }).catch(function (error) {
-                    console.log(error);
-                });
+                fetchProduct(props.code, props.swatchClick).then(() => {
+                  const stateObj = getStateObj();
+                  product.value = stateObj.product.value;
+                  swatches.value = stateObj.swatches.value;
+                })
             }
         })
     });

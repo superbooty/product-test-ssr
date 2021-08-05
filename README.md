@@ -173,8 +173,8 @@ Add the following to /extra/httpd-vhosts.conf
     ProxyPassReverse /js/ http://localhost:8080/js/
 
 
-    ProxyPass / http://localhost:8000/
-    ProxyPassReverse / http://localhost:8000/
+    ProxyPass /product http://localhost:8000/
+    ProxyPassReverse /product http://localhost:8000/
 
 </VirtualHost>
 

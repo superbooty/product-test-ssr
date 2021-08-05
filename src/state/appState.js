@@ -72,7 +72,14 @@ export function appState() {
             // Get a JSON object from each of the responses
             return Promise.all(responses.map(function (response) {
                 return response.json();
-            }));
+            })).then(function (data) {
+                state.value.product.value = data[0];
+                if (data[1]) {
+                    state.value.swatches.value = data[1];
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
         })
     }
     return {getStateObj, fetchProduct, fetchNav};
