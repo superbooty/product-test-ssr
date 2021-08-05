@@ -4,7 +4,8 @@
         <div class="swatches-wrapper">
             <div class="color">Color: {{ data.data.product.colorName }}</div>
             <ul v-if="swatches">
-                <li v-for="(swatch, index) in swatches.data.swatches.swatches" :key="swatch.code" :class="{'selected': isSelected(index)}">
+                <li v-for="(swatch) in swatches.data.swatches.swatches" :key="swatch.code">
+                    <div :class="{'selected': isSelected(swatch.code)}"></div>
                     <!-- <router-link :to="{ name: 'Product', params: { code: swatch.code, swatchClick: true }}"><img :src="swatch.imageUrl" /></router-link> -->
                     <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a>
                 </li>
@@ -84,8 +85,8 @@ export default {
         getStateObj().selectedSizes.length = selectedLength.value;
     }
     
-    const isSelected = (index) => {
-      return props.swatches.data.swatches.swatches[index].code === props.data.data.product.code;
+    const isSelected = (code) => {
+      return code === props.data.data.product.code;
     }
 
     // computed
@@ -165,13 +166,22 @@ export default {
                 padding: 0;
                 margin: 5px 0;
                 li {
+                    position: relative;
                     padding: 5px;
-                    width: 30px;
-                    height: 30px;
-                    &.selected {
-                      border: 1px solid black;
-                      border-radius: 30px;
-                      padding: 3px;
+                    width: 28px;
+                    height: 28px;
+                    div {
+                      display: none;
+                      position: absolute;
+                      &.selected {
+                        display: block;
+                        height: 32px;
+                        width: 32px;
+                        top: 2px;
+                        left: 2px;
+                        border: 1px solid black;
+                        border-radius: 30px;
+                      }
                     }
                     img {
                         border-radius: 30px;
