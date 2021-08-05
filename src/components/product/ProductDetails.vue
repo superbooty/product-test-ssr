@@ -4,9 +4,9 @@
         <div class="swatches-wrapper">
             <div class="color">Color: {{ data.data.product.colorName }}</div>
             <ul v-if="swatches">
-                <li v-for="swatch in swatches.data.swatches.swatches" :key="swatch.code">
-                    <router-link :to="{ name: 'Product', params: { code: swatch.code, swatchClick: true }}"><img :src="swatch.imageUrl" /></router-link>
-                    <!-- <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a> -->
+                <li v-for="(swatch, index) in swatches.data.swatches.swatches" :key="swatch.code" :class="{'selected': isSelected(index)}">
+                    <!-- <router-link :to="{ name: 'Product', params: { code: swatch.code, swatchClick: true }}"><img :src="swatch.imageUrl" /></router-link> -->
+                    <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a>
                 </li>
             </ul>
         </div>
@@ -83,6 +83,10 @@ export default {
         selectedLength.value = sizeTilesLength.value[index];
         getStateObj().selectedSizes.length = selectedLength.value;
     }
+    
+    const isSelected = (index) => {
+      return props.swatches.data.swatches.swatches[index].code === props.data.data.product.code;
+    }
 
     // computed
     const sizeTilesWaist = computed(() => {
@@ -99,7 +103,8 @@ export default {
         sizeTilesWaist,
         sizeTilesLength,
         selectedWaist,
-        selectedLength
+        selectedLength,
+        isSelected,
     }
   },
   components: {
@@ -158,10 +163,16 @@ export default {
                 display: flex;
                 flex-direction: row;
                 padding: 0;
+                margin: 5px 0;
                 li {
-                    padding: 0 10px;
+                    padding: 5px;
                     width: 30px;
                     height: 30px;
+                    &.selected {
+                      border: 1px solid black;
+                      border-radius: 30px;
+                      padding: 3px;
+                    }
                     img {
                         border-radius: 30px;
                         width: 100%;
