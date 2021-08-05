@@ -65,6 +65,7 @@ export default {
         nextTick(() => {
             if (window.__PUPPETEER_PRODUCT_CTX__ &&
                 window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
+                console.log("FROM SSR");
                 product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
                 swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
             } else {

@@ -76,6 +76,11 @@ export function appState() {
                 state.value.product.value = data[0];
                 if (data[1]) {
                     state.value.swatches.value = data[1];
+                } else {
+                    // maybe swatches is from SSR
+                    if (window.__PUPPETEER_PRODUCT_CTX__) {
+                        state.value.swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
+                    }
                 }
             }).catch(function (error) {
                 console.log(error);
