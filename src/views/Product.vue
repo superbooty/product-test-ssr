@@ -22,7 +22,7 @@ import SimpleCarousel from "../components/carousel/SimpleCarousel.vue";
 import {appState} from "@/state/appState";
 
 
-import { ref, onMounted, computed, nextTick } from "vue";
+import { ref, onMounted, computed } from "vue";
 export default {
   
   props: {
@@ -62,20 +62,18 @@ export default {
     // hooks
     onMounted(() => {
         console.log("IS FROM SWATCH :: ", props.swatchClick);
-        nextTick(() => {
-            if (window.__PUPPETEER_PRODUCT_CTX__ &&
-                window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
-                console.log("FROM SSR");
-                product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
-                swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
-            } else {
-                fetchProduct(props.code, props.swatchClick).then(() => {
-                  const stateObj = getStateObj();
-                  product.value = stateObj.product.value;
-                  swatches.value = stateObj.swatches.value;
-                })
-            }
-        })
+        if (window.__PUPPETEER_PRODUCT_CTX__ &&
+            window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
+            console.log("FROM SSR");
+            product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
+            swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
+        } else {
+            fetchProduct(props.code, props.swatchClick).then(() => {
+              const stateObj = getStateObj();
+              product.value = stateObj.product.value;
+              swatches.value = stateObj.swatches.value;
+            })
+        }
     });
 
     return {

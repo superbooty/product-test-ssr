@@ -23,7 +23,7 @@
     </section>
 </template>
 <script>
-import { ref, onMounted, nextTick } from "vue";
+import { ref, onMounted } from "vue";
 
 import {appState} from "@/state/appState";
 
@@ -51,18 +51,16 @@ export default {
     }
 
     onMounted(() => {
-        nextTick(() => {
-            if (window.__PUPPETEER_HEADER_CTX__) {
-                nav.value = window.__PUPPETEER_HEADER_CTX__.nav;
-            } else {
-                fetchNav().then(function (data) {
-                    console.log("DATA :: ", data[0].data.cmsContent.data.entries[0].header_category_links[0]);
-                    nav.value = data[0].data.cmsContent.data.entries[0].header_category_links[0];
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
-        })        
+        if (window.__PUPPETEER_HEADER_CTX__) {
+            nav.value = window.__PUPPETEER_HEADER_CTX__.nav;
+        } else {
+            fetchNav().then(function (data) {
+                console.log("DATA :: ", data[0].data.cmsContent.data.entries[0].header_category_links[0]);
+                nav.value = data[0].data.cmsContent.data.entries[0].header_category_links[0];
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } 
     });
 
     return {

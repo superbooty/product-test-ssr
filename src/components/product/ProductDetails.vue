@@ -3,11 +3,11 @@
         <div class="product-name">{{ data.data.product.name }}</div>
         <div class="swatches-wrapper">
             <div class="color">Color: {{ data.data.product.colorName }}</div>
-            <ul v-if="swatches">
+            <ul >
                 <li v-for="(swatch) in swatches.data.swatches.swatches" :key="swatch.code">
                     <div :class="{'selected': isSelected(swatch.code)}"></div>
-                    <router-link :to="{ name: 'Product', params: { code: swatch.code, swatchClick: true }}"><img :src="swatch.imageUrl" /></router-link>
-                    <!-- <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a> -->
+                    <!-- <router-link :to="{ name: 'Product', params: { code: swatch.code, swatchClick: true }}"><img :src="swatch.imageUrl" /></router-link> -->
+                    <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a>
                 </li>
             </ul>
         </div>
@@ -18,7 +18,6 @@
             :class="{selected: sizeTilesWaist[i] == selectedWaist}"
             :key="`w${i}-${waist}`" @click="setSelectedWaist(i)">
               {{waist}}
-              <div v-if="selectedWaistIdx == i"></div>
             </li>
           </ul>
           <div v-if="data.data.product.variantLength?.length > 0" class="size-label" >Length {{selectedLength}}</div>
@@ -27,7 +26,6 @@
             :class="{selected: sizeTilesLength[i] == selectedLength}"
             :key="`l${i}-${lengthSize}`" @click="setSelectedLength(i)">
               {{lengthSize}}
-              <div v-if="selectedLengthIdx == i" ></div>
             </li>
           </ul>
           <div v-if="data.data.product.variantSize?.length > 0" class="size-label" >Size</div>
@@ -35,7 +33,6 @@
             <li  v-for="(size, i) in data.data.product.variantSize"
             :key="`l${i}-${size}`" @click="setSelectedSize(i)">
               {{size}}
-              <div v-if="selectedSizeIdx == i" :class="{selected: selectedSizeIdx == i}"></div>
             </li>
           </ul>
         </section>
@@ -141,6 +138,9 @@ export default {
                 margin: 0;
                 li {
                     &.selected {
+                        height: 40px;
+                        width: 40px;
+                        line-height: 40px;
                         border: 1px solid #a3a3a3;
                         border-radius: 4px;
                     }
