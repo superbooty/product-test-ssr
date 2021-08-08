@@ -1,13 +1,13 @@
 <template>
-    <div v-if="data" class="product-details" :class="{'separator': separator}">
+    <div v-if="data" class="product-details" >
         <div class="product-name">{{ data.data.product.name }}</div>
         <div class="swatches-wrapper">
             <div class="color">Color: {{ data.data.product.colorName }}</div>
             <ul >
                 <li v-for="(swatch) in swatches.data.swatches.swatches" :key="swatch.code">
                     <div :class="{'selected': isSelected(swatch.code)}"></div>
-                    <!-- <router-link :to="{ name: 'Product', params: { code: swatch.code, swatchClick: true }}"><img :src="swatch.imageUrl" /></router-link> -->
-                    <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a>
+                    <router-link :to="{ name: 'Product', params: { code: swatch.code, swatchClick: true }}"><img :src="swatch.imageUrl" /></router-link>
+                    <!-- <a :href="`/product/${swatch.code}`"><img :src="swatch.imageUrl" /></a> -->
                 </li>
             </ul>
         </div>

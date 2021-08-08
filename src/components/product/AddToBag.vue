@@ -14,9 +14,6 @@ import {appState} from "@/state/appState";
 export default {
   name: 'App',
   props: {
-    pc13: {
-      required: true,
-    },
   },
   setup() {
     const {getStateObj} = appState();

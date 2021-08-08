@@ -32,7 +32,7 @@ export default {
     },
     swatchClick: {
       type: Boolean,
-      required: true,
+      default: false,
     },
   },
   setup(props) {

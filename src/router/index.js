@@ -15,11 +15,18 @@ const routes = [
       return import('../views/Product.vue')
     },
     // component: ProductView,
-    props: true
+    props: (route) => {
+      return { code: route.params.code,
+        'swatchClick': route.params.swatchClick === 'true'
+      }
+    }
   },
 ]
 
-
+// const propCasterFn = (route) => {
+//   console.log("CLICKED :: ", route.params.swatchClicked);
+//   return true;
+// }
 
 const router = createRouter({
   history: createWebHistory(),

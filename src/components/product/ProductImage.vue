@@ -4,7 +4,7 @@
         :image="data.data.product.galleryImageList.galleryImage[0]"
         :aspect-ratio="aspectRatio"
         :disable-bottom-crop="true"
-        :product-alt="productAlt"
+        product-alt="testing"
     />
     </div>
 </template>

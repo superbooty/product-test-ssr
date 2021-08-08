@@ -7,7 +7,6 @@
             v-if="widthAndHeightQueryString && useLazyLoad"
             class="processed-image"
             :style="style"
-            v-lazy="processedImageUrl"
             :alt="getAltTags"
             :data-gallery-index="getGalleryIndex"
         >
