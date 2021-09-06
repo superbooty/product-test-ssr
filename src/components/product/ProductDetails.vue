@@ -164,26 +164,32 @@ export default {
         }
         .swatches-wrapper {
             margin: 20px 0;
+            .color {
+              color: #6e6e6e;
+              line-height: 20px;
+              font-size: 12px;
+            }
             ul {
                 list-style-type: none;
                 display: flex;
                 flex-direction: row;
+                flex-wrap: wrap;
                 padding: 0;
                 margin: 5px 0;
                 li {
                     position: relative;
-                    padding: 5px 10px;
-                    width: 28px;
-                    height: 28px;
+                    padding: 5px 10px 5px 2px;
+                    width: 24px;
+                    height: 24px;
                     div {
                       display: none;
                       position: absolute;
                       &.selected {
                         display: block;
-                        height: 32px;
-                        width: 32px;
+                        height: 28px;
+                        width: 28px;
                         top: 2px;
-                        left: 7px;
+                        left: -1px;
                         border: 1px solid #4c4c4c;
                         border-radius: 30px;
                       }

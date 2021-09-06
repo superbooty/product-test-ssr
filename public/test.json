@@ -1,0 +1,529 @@
+{
+    "code": "005054891",
+    "swatchClick": false,
+    "product": {
+        "data": {
+            "product": {
+                "altText": "Men-Jeans-505™ Regular Fit Men's Jeans-Medium Stonewash",
+                "averageOverallRatings": 4.1161,
+                "baseProduct": "00505",
+                "channels": [],
+                "classifications": [
+                    {
+                        "code": "bottoms",
+                        "features": [
+                            {
+                                "code": "lscoClassificationCatalog/1.0/bottoms.wash",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Medium Wash",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Wash",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/bottoms.leg_opening",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Straight",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Leg Opening",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/bottoms.fit_name",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "505™",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Fit Name",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/bottoms.stretch",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Non Stretch",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Stretch",
+                                "range": false,
+                                "type": null
+                            }
+                        ],
+                        "name": "Bottoms"
+                    },
+                    {
+                        "code": "apparel",
+                        "features": [
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.size_group",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Men's",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Size Group",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.occasion",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "INCLUDED",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "1",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Occasion",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.gender",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Men",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Gender",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.material",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "100% cotton",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Denim",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Non-stretch",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Zip Fly",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "5-pocket styling",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Wash your jeans once every 10 wears at most; this increases their lifespan and saves natural resources",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "When you eventually launder your jeans, wash and dry them inside out with like colors; liquid detergent is recommended",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Imported",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Materials",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.color_family",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Medium Stonewash",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Color Family",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.closure",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Zip Fly",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Closure",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.fit",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Straight",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Fit",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.fit_text",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "Extra room through the seat and thigh",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Sits at your waist",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Straight leg",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Measurements from size 32:",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Front rise: 11\"",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Knee: 18\"",
+                                        "code": null
+                                    },
+                                    {
+                                        "value": "Leg opening: 16\"",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Fit & Sizing",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.features_apparel",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "100% Cotton",
+                                        "code": null
+                                    }
+                                ],
+                                "name": "Features",
+                                "range": false,
+                                "type": null
+                            },
+                            {
+                                "code": "lscoClassificationCatalog/1.0/apparel.sustainability",
+                                "comparable": true,
+                                "description": null,
+                                "featureUnit": null,
+                                "featureValues": [
+                                    {
+                                        "value": "WaterLess",
+                                        "code": "water-less"
+                                    }
+                                ],
+                                "name": null,
+                                "range": false,
+                                "type": null
+                            }
+                        ],
+                        "name": "Apparel"
+                    }
+                ],
+                "code": "005054891",
+                "colorGroup": "Medium Wash",
+                "colorName": "Medium Stonewash",
+                "comingSoon": false,
+                "crossSellProductUrl": "/clothing/men/jeans/505-regular-fit-mens-jeans-big-tall/p/045054891",
+                "crossSellSizeGroup": "Men's Big & Tall",
+                "customizable": false,
+                "flxCustomization": false,
+                "availableForPickup": false,
+                "department": "Men",
+                "pdpGroupId": "00505",
+                "returnable": true,
+                "customizationType": "",
+                "description": "<p>It's no secret we love us a button fly, but sometimes, you need a zipper. Meet the original zip fly from 1967, the 505™ Regular. With its versatile straight leg and classic style, this fit suits all body types and goes with pretty much everything.</p><UL> <LI> The original zip fly created in 1967 </LI><LI> Beloved for its classic straight leg </LI><LI> Made with a comfy, roomy fit </LI><LI> The versatility of the straight leg works for all body types </LI><LI> Try a thick cuff styled with casual sneakers </LI><LI> Made with our sustainable Water&lt;Less® techniques </LI> </UL>",
+                "findInStoreEligible": false,
+                "lscoBreadcrumbs": [
+                    {
+                        "categoryCode": "levi_clothing",
+                        "name": "Clothing",
+                        "url": "/clothing/c/levi_clothing"
+                    },
+                    {
+                        "categoryCode": "levi_clothing_men",
+                        "name": "Men",
+                        "url": "/clothing/men/c/levi_clothing_men"
+                    },
+                    {
+                        "categoryCode": "levi_clothing_men_jeans",
+                        "name": "Jeans",
+                        "url": "/clothing/men/jeans/c/levi_clothing_men_jeans"
+                    },
+                    {
+                        "categoryCode": "levi_clothing_men_jeans_straight",
+                        "name": "Straight",
+                        "url": "/clothing/men/jeans/straight/c/levi_clothing_men_jeans_straight"
+                    },
+                    {
+                        "categoryCode": null,
+                        "name": "505™ Regular Fit Men's Jeans",
+                        "url": "/clothing/men/jeans/505-regular-fit-mens-jeans/p/005054891"
+                    }
+                ],
+                "galleryImageList": {
+                    "galleryImage": [
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 0,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-front-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 1,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-back-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 2,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-side-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 3,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-alt1-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 4,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-alt2-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 5,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-alt3-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 6,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-alt4-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 7,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-alt5-pdp?$qv_desktop_full$"
+                        },
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Quickview_Desktop",
+                            "galleryIndex": 8,
+                            "imageType": "GALLERY",
+                            "url": "https://lsco.scene7.com/is/image/lsco/005054891-alt6-pdp?$qv_desktop_full$"
+                        }
+                    ],
+                    "videos": [
+                        {
+                            "altText": "505™ Regular Fit Men's Jeans",
+                            "format": "Video",
+                            "galleryIndex": 0,
+                            "url": "https://lsco.scene7.com/is/image/lsco/18_H2_505REGULAR_M_NOTEXT_1500x844"
+                        }
+                    ]
+                },
+                "itemType": "Jeans",
+                "maxOrderQuantity": 6,
+                "merchantBadge": null,
+                "minOrderQuantity": 1,
+                "multidimensional": true,
+                "name": "505™ Regular Fit Men's Jeans",
+                "noOfRatings": 2903,
+                "pdpCmsContentId1": "levis_mens_505_pdp",
+                "pdpCmsContentId2": null,
+                "preferredCategory": "levi_clothing_men_jeans_straight",
+                "price": {
+                    "code": null,
+                    "currencyIso": "USD",
+                    "formattedValue": "$41.65",
+                    "hardPrice": null,
+                    "hardPriceFormattedValue": null,
+                    "maxQuantity": null,
+                    "minQuantity": null,
+                    "priceType": "BUY",
+                    "regularPrice": 59.5,
+                    "regularPriceFormattedValue": "$59.50",
+                    "softPrice": 41.65,
+                    "softPriceFormattedValue": "$41.65",
+                    "value": 41.65
+                },
+                "promotionalBadge": null,
+                "purchasable": true,
+                "soldIndividually": true,
+                "soldOutForever": false,
+                "summary": "",
+                "url": "/clothing/men/jeans/505-regular-fit-mens-jeans/p/005054891",
+                "variantLength": [
+                    "29",
+                    "30",
+                    "32",
+                    "34",
+                    "36",
+                    "40"
+                ],
+                "variantOptions": [
+                    {
+                        "code": "00505489102930",
+                        "colorName": null,
+                        "displaySizeDescription": "29W X 30L",
+                        "maxOrderQuantity": null,
+                        "minOrderQuantity": null,
+                        "priceData": {
+                            "code": null,
+                            "currencyIso": "USD",
+                            "formattedValue": "$41.65",
+                            "hardPrice": null,
+                            "hardPriceFormattedValue": null,
+                            "maxQuantity": null,
+                            "minQuantity": null,
+                            "priceType": "BUY",
+                            "regularPrice": 59.5,
+                            "regularPriceFormattedValue": "$59.50",
+                            "softPrice": 41.65,
+                            "softPriceFormattedValue": "$41.65",
+                            "value": 41.65
+                        },
+                        "stock": {
+                            "stockLevel": 474,
+                            "stockLevelStatus": "inStock"
+                        },
+                        "upc": "00052177087100",
+                        "url": "/c//p/00505489102930"
+                    },
+                    {
+                        "code": "00505489102932",
+                        "colorName": null,
+                        "displaySizeDescription": "29W X 32L",
+                        "maxOrderQuantity": null,
+                        "minOrderQuantity": null,
+                        "priceData": {
+                            "code": null,
+                            "currencyIso": "USD",
+                            "formattedValue": "$41.65",
+                            "hardPrice": null,
+                            "hardPriceFormattedValue": null,
+                            "maxQuantity": null,
+                            "minQuantity": null,
+                            "priceType": "BUY",
+                            "regularPrice": 59.5,
+                            "regularPriceFormattedValue": "$59.50",
+                            "softPrice": 41.65,
+                            "softPriceFormattedValue": "$41.65",
+                            "value": 41.65
+                        },
+                        "stock": {
+                            "stockLevel": 137,
+                            "stockLevelStatus": "inStock"
+                        },
+                        "upc": "00052177087117",
+                        "url": "/c//p/00505489102932"
+                    },
+                    {
+                        "code": "00505489102934",
+                        "colorName": null,
+                        "displaySizeDescription": "29W X 34L",
+                        "maxOrderQuantity": null,
+                        "minOrderQuantity": null,
+                        "priceData": {
+                            "code": null,
+                            "currencyIso": "USD",
+                            "formattedValue": "$41.65",
+                            "hardPrice": null,
+                            "hardPriceFormattedValue": null,
+                            "maxQuantity": null,
+                            "minQuantity": null,
+                            "priceType": "BUY",
+                            "regularPrice": 59.5,
+                            "regularPriceFormattedValue": "$59.50",
+                            "softPrice": 41.65,
+                            "softPriceFormattedValue": "$41.65",
+                            "value": 41.65
+                        },
+                        "stock": {
+                            "stockLevel": 71,
+                            "stockLevelStatus": "inStock"
+                        },
+                        "upc": "00052177087124","u…

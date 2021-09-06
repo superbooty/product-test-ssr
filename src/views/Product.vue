@@ -1,5 +1,5 @@
 <template>
-  <div v-if="product" class="bread-crumb">{{product.data.product.lscoBreadcrumbs[3].name}}</div>
+  <div v-if="product" class="bread-crumb">{{pdpBreadCrumb}}</div>
   <div v-if="product" class="product-container">
     <section class="product-hero">
         <product-image :data="product"></product-image>
@@ -18,9 +18,7 @@ import SimpleCarousel from "../components/carousel/SimpleCarousel.vue";
 
 // import {appState} from "@/state/appState";
 
-
 import {appState} from "@/state/appState";
-
 
 import { ref, onMounted, computed } from "vue";
 export default {
@@ -40,7 +38,7 @@ export default {
 
     const { fetchProduct, getStateObj } = appState();
 
-    const product = ref(null);
+    const productRef = ref(null);
     const swatches = ref(null);
 
     // fetchProduct(props.code);
@@ -58,6 +56,16 @@ export default {
         })
         return processedArray;
     });
+
+    const pdpBreadCrumb = computed (() => {
+      const { length } = product.value.data.product.lscoBreadcrumbs;
+      const parentBreadCrumb = product.value.data.product?.lscoBreadcrumbs[length - 2];
+      return parentBreadCrumb.name
+    });
+
+    const product = computed(() => {
+      return productRef.value;
+    })
    
     // hooks
     onMounted(() => {
@@ -65,21 +73,27 @@ export default {
         if (window.__PUPPETEER_PRODUCT_CTX__ &&
             window.__PUPPETEER_PRODUCT_CTX__.code === props.code) {
             console.log("FROM SSR");
-            product.value = window.__PUPPETEER_PRODUCT_CTX__.product;
+            productRef.value = window.__PUPPETEER_PRODUCT_CTX__.product;
             swatches.value = window.__PUPPETEER_PRODUCT_CTX__.swatches;
         } else {
             fetchProduct(props.code, props.swatchClick).then(() => {
               const stateObj = getStateObj();
-              product.value = stateObj.product.value;
+              productRef.value = stateObj.product.value;
               swatches.value = stateObj.swatches.value;
             })
         }
+        // fetchProduct(props.code, props.swatchClick).then(() => {
+        //   const stateObj = getStateObj();
+        //   productRef.value = stateObj.product.value;
+        //   swatches.value = stateObj.swatches.value;
+        // })
     });
 
     return {
         product,
         swatches,
-        processedImgArray
+        processedImgArray,
+        pdpBreadCrumb
     };
   },
   
@@ -95,14 +109,15 @@ export default {
 <style scoped lang="scss">
     .bread-crumb {
         text-align: left;
-        padding-left: 20px;
+        padding-left: 40px;
         font-weight: 600;
         font-size: 14px;
+        height: 30px;
         &:before {
             content: '\27E8';
             font-weight: 900;
-            font-size: 16px;
-            margin-right: 4px;
+            font-size: 20px;
+            margin-right: 8px;
         }
     }
     .product-container {

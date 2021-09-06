@@ -1,9 +1,11 @@
 <template>
     <header-view></header-view>
     <!-- Notice the keep alive, this saves a copy of the entire view to memory -->
-    <!-- <keep-alive> -->
-      <router-view :key="$route.path"/>
-    <!-- </keep-alive> -->
+    <router-view :key="$route.path" v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
 </template>
 <script>
 import HeaderView from '@/global/Header.vue'
@@ -12,12 +14,6 @@ import { onMounted } from "vue";
   
 export default {
   name: 'App',
-  props: {
-    code: {
-      type: String,
-      required: true,
-    },
-  },
   setup() {
     onMounted(() => {
       console.log("VUE :: ", document.querySelector(".product-details"));
@@ -32,11 +28,11 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #141414;
 }
 
 #nav {

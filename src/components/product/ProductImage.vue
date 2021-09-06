@@ -5,7 +5,7 @@
         :aspect-ratio="aspectRatio"
         :disable-bottom-crop="true"
         product-alt="testing"
-    />
+      />
     </div>
 </template>
 

@@ -21,6 +21,22 @@ const routes = [
       }
     }
   },
+  {
+    path: '/:matchAll(.*)/c/:code',
+    name: 'Category',
+    
+    component: () => {
+      return import('../views/Category.vue')
+    },
+    props: (route) => {
+      return { code: route.params.code,
+      }
+    },
+    // component: ProductView,
+    beforeEnter: (route) => {
+      console.log("ENTERING THE CATEGORY ROUTE :: ", route.params.code);
+    },
+  },
 ]
 
 // const propCasterFn = (route) => {

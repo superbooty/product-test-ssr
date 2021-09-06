@@ -4,6 +4,7 @@ import {ref } from "vue";
 // import {productQuery} from "@/gql/productQuery";
 import {swatchQuery} from "@/gql/swatchQuery";
 import {cmsQuery} from "@/gql/cmsQuery";
+import {categoriesQuery} from "@/gql/categoriesQuery";
 
 const state = ref({
     stateObj: {},
@@ -57,6 +58,8 @@ export function appState() {
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
+                    "x-country": "US",
+                    "x-locale": "en_US"
                 },
                 body: JSON.stringify({
                     operationName: "swatches",
@@ -87,7 +90,44 @@ export function appState() {
             });
         })
     }
-    return {getStateObj, fetchProduct, fetchNav};
+
+    const fetchCategory = (categoryId) => {
+        const fetchPromises = [];
+        const country = "US";
+        const language = "en-US";
+        const categoriesPromise = fetch(`https://www.levi.com/nextgen-webhooks/?operationName=categories&locale=US-en_US`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "x-country": "US",
+                "x-locale": "en_US"
+            },
+            body: JSON.stringify({
+                operationName: "categories",
+                variables: {
+                    query: ':relevance',
+                    country: country,
+                    locale: language,
+                    currentPage: 0,
+                    pageSize: 36,
+                    sort: 'relevance',
+                    categoryId: categoryId,
+                },
+                query: categoriesQuery
+            }),
+        });
+        fetchPromises.push(categoriesPromise);
+        return Promise.all(fetchPromises).then(function (responses) {
+            // Get a JSON object from each of the responses
+            return Promise.all(responses.map(function (response) {
+                return response.json();
+            })).catch(function (error) {
+                console.log(error);
+            });
+        })
+    }
+    return {getStateObj, fetchProduct, fetchCategory, fetchNav};
 }
 
 export default {

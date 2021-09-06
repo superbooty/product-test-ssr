@@ -22,6 +22,9 @@ export default {
 
     const addToBag = () => {
       console.log("ADD TO BAG ...");
+      const appState = getStateObj();
+      console.log("SELECTED SIZES :: ", appState.product, appState.selectedSizes)
+
     } 
     return {
       addToBag

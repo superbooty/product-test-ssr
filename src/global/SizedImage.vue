@@ -1,6 +1,7 @@
 <template>
     <div
         class="image-container"
+        :class="{'plp': isPLP}"
         ref="imageContainer"
     >
         <img
@@ -52,6 +53,10 @@ export default {
             type: String,
             default: "",
         },
+        isPLP: {
+            type: Boolean,
+            default: false,
+        }
     },
 
     setup(props) {
@@ -155,8 +160,10 @@ export default {
 <style lang="scss" scoped>
 .image-container {
     width: 90%;
+    &.plp {
+        width: 100%;
+    }
     .processed-image {
-        max-width: 90%;
         top: 0;
         left: 0;
         width: 100%;
