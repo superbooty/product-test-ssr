@@ -1,5 +1,10 @@
 <template>
     <div class="page">
+      <div class="filter-facets">
+        <div class="store-pickup">
+          <span class="title" >Some Store Pickup</span>
+        </div>
+      </div>
       <div v-if="decorators != null" class="container-col">
         <div v-for="(commerce, i) in computedCommerce"
           class="item" :class="{decorated: commerce.decoratedRow && commerce.itemPlacement < 3 }"
@@ -328,10 +333,23 @@ export default {
 
 }
 
+.filter-facets {
+  .store-pickup {
+    background: #ecf0f1;
+    min-height: 200px;
+    .title {
+      line-height: 30px;
+      font-size: 12px;
+    }
+  }
+}
 
 .page {
-  max-width: 800px;
-  display: inline-block;
-  /* width: 800px; */
+  display: grid;
+  max-width: 100vw;
+  grid-template-columns: 300px auto;
+  grid-column-gap: 30px;
+  padding: 0 30px;
+  justify-content: space-around;
 }
 </style>

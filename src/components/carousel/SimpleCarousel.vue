@@ -16,7 +16,7 @@
         class="img-container"
         :key="`img-${index}`"
       >
-        <span class="img-num">{{index + 1}}/{{images.length}}</span>
+        <span v-if="showImgNum" class="img-num">{{index + 1}}/{{images.length}}</span>
         <img class="slider-img" :src="image.url" :ref="`img-${index}`"/>
       </div>
     </div>
@@ -39,6 +39,10 @@ export default {
       type: Array,
       required: true,
     },
+    showImageNum: {
+      type: Boolean,
+      default: false,
+    }
   },
 
   setup(props) {

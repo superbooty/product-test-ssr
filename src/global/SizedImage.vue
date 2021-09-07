@@ -169,6 +169,7 @@ export default {
         width: 100%;
         object-fit: cover;
         object-position: 50% 50%;
+        background: url("https://media2.giphy.com/media/58Y1tQU8AAhna/giphy.gif");
     }
 }
 </style>

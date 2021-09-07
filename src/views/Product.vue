@@ -14,13 +14,16 @@
 <script>
 import ProductImage from "../components/product/ProductImage.vue";
 import ProductDetails from "../components/product/ProductDetails.vue";
-import SimpleCarousel from "../components/carousel/SimpleCarousel.vue";
+// import SimpleCarousel from "../components/carousel/SimpleCarousel.vue";
+const SimpleCarousel = defineAsyncComponent(
+  () => import('../components/carousel/SimpleCarousel.vue')
+);
 
 // import {appState} from "@/state/appState";
 
 import {appState} from "@/state/appState";
 
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, defineAsyncComponent, computed } from "vue";
 export default {
   
   props: {
