@@ -26,9 +26,10 @@
               <add-to-bag-modal v-if="atcModals[i]" :code=commerce.product.code @closeModal="closeModal(i)"/> -->
             </div>
           </div>
-            <div>{{commerce.product.name}}</div>
-            <div class="color">Color: {{commerce.product.colorName}}</div>
-            <div>{{commerce.product.price.formattedValue}}</div>
+          <swatches />
+          <div>{{commerce.product.name}}</div>
+          <div class="color">Color: {{commerce.product.colorName}}</div>
+          <div>{{commerce.product.price.formattedValue}}</div>
         </div>
         <div
           v-for="(d, i) in decorators.content"
@@ -39,6 +40,7 @@
           <decorator :content="d.content"></decorator>
         </div>
       </div>
+      <pagination :pagination="pagination" :path="path" @page-change="handlePageChange"/>
       <!-- <item-selector :items="products"></item-selector> -->
       <!-- <shoppable-video></shoppable-video> -->
     </div>
@@ -46,6 +48,7 @@
 
 <script>
 import Decorator from "../components/category/Decorator.vue";
+import Pagination from "../components/category/Pagination.vue";
 import SizedImage from "@/global/SizedImage.vue";
 // import ItemSelector from "../components/category/ItemSelector.vue";
 // import ShoppableVideo from "../components/category/ShoppableVideo.vue";
@@ -54,7 +57,8 @@ import SizedImage from "@/global/SizedImage.vue";
 // );
 // import AddToBagModal from "./components/AddToBagModal.vue"
 
-import {ref, onMounted, computed} from 'vue';
+import router from "@/router";
+import {ref, onMounted, watch, computed} from 'vue';
 
 import {appState} from "@/state/appState";
 
@@ -65,6 +69,15 @@ export default {
     code: {
       type: String,
       required: true,
+    },
+    path: {
+      type: String,
+      required: true,
+    },
+    pageNum: {
+      type: String,
+      required: true,
+      default: "1",
     },
     aspectRatio: {
       type: String,
@@ -78,6 +91,7 @@ export default {
     const { fetchCategory } = appState();
 
     const qvButtonState = ref([]);
+    const pagination = ref();
     const products = ref(null);
     const decorators = ref([]);
     const atcModals = ref([]);
@@ -129,6 +143,12 @@ export default {
       return decs != null && decs.length > 0 ? decs[0] : false;
     }
 
+    const handlePageChange = (opts) => {
+      console.log("OPTS :: ", opts);
+      // call route
+      router.push({name: 'Category', query: {pageNum: opts.pageNum}});
+    }
+
     const showATCButton = (i) => {
       qvButtonState.value[i] = true;
       // this.quickViewBtnActive = !this.quickViewBtnActive;
@@ -155,12 +175,26 @@ export default {
       atcModals.value[selected.value] = false;
     }
 
+    const getCategory = (pageNum) => {
+      fetchCategory(props.code, pageNum).then((category) => {
+        console.log("CAT :: ", category);
+        products.value = category[0].data.categories.products;
+        pagination.value = category[0].data.categories.pagination;
+      })
+    }
+
+    // watchers
+    watch(
+      () => props.pageNum,
+      () => {
+        // the slider position can be controlled by the parent if necessary
+        getCategory(props.pageNum);
+      }
+    );
+
     // hooks
     onMounted(() => {
-        fetchCategory(props.code).then((category) => {
-          console.log("CAT :: ", category);
-          products.value = category[0].data.categories.products;
-        })
+        getCategory(props.pageNum);
     });
 
     // computed
@@ -168,7 +202,7 @@ export default {
       let commerceProducts = [];
       let colsCount = 0;
       if (products.value != null) {
-        console.log("PRODUCTS :: ", products);
+        // console.log("PRODUCTS :: ", products);
         products.value.forEach((product, i) => {
           let commerceProduct = {
             product: product,
@@ -189,7 +223,7 @@ export default {
           if (commerceProduct.row === 3) {
             commerceProduct.decoratedRow = 3;
           }
-          console.log('PRODUCT :: ', commerceProduct);
+          // console.log('PRODUCT :: ', commerceProduct);
           commerceProducts.push(commerceProduct);
         });
       }
@@ -200,7 +234,8 @@ export default {
       qvButtonState, decorators,
       products, computedCommerce, qvButtons,
       atcModals, showATCButton, hideATCButton,
-      showMyModal, closeModal,
+      showMyModal, closeModal, pagination,
+      handlePageChange,
     }
 
   },
@@ -208,6 +243,7 @@ export default {
   components: {
     Decorator,
     SizedImage,
+    Pagination,
   },
   mounted() {
     const width = window.innerWidth;
@@ -292,8 +328,7 @@ export default {
     grid-auto-rows: auto;
     grid-auto-flow: row;
     grid-template-columns: repeat(6, 1fr);
-    grid-column-gap: 15px;
-    grid-row-gap: 15px;
+    grid-gap: 64px 4%;
     display: grid;
   }
 
@@ -347,8 +382,8 @@ export default {
 .page {
   display: grid;
   max-width: 100vw;
-  grid-template-columns: 300px auto;
-  grid-column-gap: 30px;
+  grid-template-columns: 16vw auto;
+  grid-column-gap: 60px;
   padding: 0 30px;
   justify-content: space-around;
 }

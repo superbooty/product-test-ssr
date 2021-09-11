@@ -91,7 +91,7 @@ export function appState() {
         })
     }
 
-    const fetchCategory = (categoryId) => {
+    const fetchCategory = (categoryId, pageNum) => {
         const fetchPromises = [];
         const country = "US";
         const language = "en-US";
@@ -109,7 +109,7 @@ export function appState() {
                     query: ':relevance',
                     country: country,
                     locale: language,
-                    currentPage: 0,
+                    currentPage: pageNum - 1,
                     pageSize: 36,
                     sort: 'relevance',
                     categoryId: categoryId,

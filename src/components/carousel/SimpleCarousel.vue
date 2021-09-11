@@ -39,7 +39,7 @@ export default {
       type: Array,
       required: true,
     },
-    showImageNum: {
+    showImgNum: {
       type: Boolean,
       default: false,
     }

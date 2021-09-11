@@ -26,7 +26,7 @@
 <script>
 import { ref, onMounted, computed } from "vue";
 
-import {appState} from "@/state/appState";
+// import {appState} from "@/state/appState";
 
 export default {
     name: "SizedImage",
@@ -71,10 +71,6 @@ export default {
         onMounted(() => {
             warnNoImages();
         });
-
-        const { getStateObj } = appState();
-
-        console.log("STATE OBJ :: ", getStateObj());
 
         // methods: 
         const warnNoImages = () => {
@@ -169,7 +165,7 @@ export default {
         width: 100%;
         object-fit: cover;
         object-position: 50% 50%;
-        background: url("https://media2.giphy.com/media/58Y1tQU8AAhna/giphy.gif");
+        // background: url("https://media2.giphy.com/media/58Y1tQU8AAhna/giphy.gif");
     }
 }
 </style>

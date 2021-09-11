@@ -29,7 +29,10 @@ const routes = [
       return import('../views/Category.vue')
     },
     props: (route) => {
+      console.log("ROUTER ROUTE :: ", route)
       return { code: route.params.code,
+        pageNum: route.query.pageNum,
+        path: route.fullPath,
       }
     },
     // component: ProductView,
